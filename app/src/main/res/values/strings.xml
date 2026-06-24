@@ -1,0 +1,219 @@
+<resources>
+    <string name="app_name">LSEBoard</string>
+
+    <string name="loading">載入中…</string>
+    <string name="error">發生錯誤</string>
+    <string name="delete">刪除</string>
+
+    <string-array name="settings_array">
+        <item>@string/setting_list_0</item>
+        <item>@string/setting_list_1</item>
+    </string-array>
+
+    <string-array name="main_activity_list">
+        <item>@string/main_activity_list_3</item>
+        <item>@string/main_activity_list_4</item>
+    </string-array>
+    
+    <string name="title_edit_activity">我的收藏</string>
+    <string name="title_activity_fetch">取得貼圖</string>
+    <string name="fetch_activity_toast">下載即將開始</string>
+    <string name="main_activity_list_3">我的收藏</string>
+    <string name="main_activity_list_4">清除歷史紀錄</string>
+
+    <string name="setting_list_0">主選單</string>
+    <string name="setting_list_1">切換鍵盤</string>
+    <string name="not_supported">此應用程式不支援從鍵盤插入媒體</string>
+    <string name="share">分享至…</string>
+    <string name="manual_add">新增貼圖</string>
+    <string name="store_id">商店 ID</string>
+    <string name="store_id_or_link">商店 ID 或連結</string>
+    <string name="store_id_helper">支援貼上多個連結，每行一個</string>
+    <string name="manual_add_store_id">新增貼圖包</string>
+    <string name="manual_add_store_id_description">可直接貼上 LINE 商店連結，系統會自動擷取 ID\n\n例如：https://line.me/S/sticker/xxx\n或直接輸入 ID</string>
+    <string name="use_fallback_url">使用備用網址</string>
+    <string name="use_fallback_url_description">如果下載失敗，請啟用此選項後重試</string>
+    <string name="positive_confirm">確認</string>
+    <string name="negative_cancel">取消</string>
+    <string name="clear_history">確定要清除您的貼圖歷史紀錄嗎？</string>
+    <string name="delete_sticker">確定要刪除此貼圖包嗎？</string>
+    <string name="positive_agree">同意</string>
+    <string name="negative_disagree">不同意</string>
+    <string name="disclaimer">免責聲明</string>
+    <string name="disclaimer_text">本應用程式與 LY Corporation 或其任何關聯公司無任何關聯、維護、授權、背書或贊助關係。\n\n使用本應用程式的風險由使用者自行承擔。</string>
+    <string name="disclaimer_toast">請先同意免責聲明</string>
+    <string name="fetch_fetching">正在取得資料…</string>
+    <string name="fetch_downloading">正在下載…</string>
+    <string name="fetch_converting">正在轉換…</string>
+    <string name="fetch_completed">操作完成！</string>
+    <string name="fetch_fetch_failed">取得資料失敗</string>
+    <string name="fetch_download_failed">下載失敗</string>
+    <string name="fetch_convert_failed">轉換失敗</string>
+    <string name="force_png">以 PNG 格式傳送此貼圖</string>
+    <string name="footer" translatable="false">LSEBoard v1.0</string>
+    <string name="channel_name">下載通知</string>
+    
+    <string name="settings">設定</string>
+    <string name="about">關於</string>
+    <string name="version">版本</string>
+    <string name="help">說明</string>
+    <string name="ok">確定</string>
+    <string name="retry">重試</string>
+    <string name="close">關閉</string>
+    <string name="search">搜尋</string>
+    <string name="empty_collection">尚無貼圖包</string>
+    <string name="add_sticker_hint">點擊下方按鈕新增貼圖包</string>
+    <string name="history">歷史紀錄</string>
+    <string name="visibility_on">顯示</string>
+    <string name="visibility_off">隱藏</string>
+    <string name="reorder">重新排序</string>
+    <string name="download_complete">下載完成</string>
+    <string name="download_failed">下載失敗</string>
+    <string name="network_error">網路連線錯誤</string>
+    <string name="invalid_id">無效的商店 ID</string>
+    <string name="sticker_pack_exists">此貼圖包已存在</string>
+    <string name="welcome_title">歡迎使用 LSEBoard</string>
+    <string name="welcome_subtitle">輕鬆分享您喜愛的貼圖與表情貼</string>
+    <string name="history_cleared">歷史紀錄已清除</string>
+    <string name="action_unavailable">此操作無法復原</string>
+    <string name="feature_title">功能</string>
+    <string name="collection_desc">管理您的貼圖包</string>
+    <string name="clear_history_desc">清除最近使用的貼圖</string>
+    
+    <!-- 區塊標題 -->
+    <string name="collection_section">收藏</string>
+    <string name="keyboard_section">鍵盤設定</string>
+    <string name="other_section">其他</string>
+    
+    <!-- 收藏描述 -->
+    <string name="sticker_collection_desc">管理您的貼圖包</string>
+    <string name="emoji_collection_desc">管理您的表情貼包</string>
+    
+    <!-- 鍵盤設定 -->
+    <string name="enable_keyboard">啟用鍵盤</string>
+    <string name="enable_keyboard_desc">在系統設定中啟用 LSEBoard</string>
+    <string name="switch_keyboard">切換鍵盤</string>
+    <string name="switch_keyboard_desc">切換到其他輸入法</string>
+    
+    <!-- 桌面圖示設定 -->
+    <string name="hide_launcher_icon">隱藏桌面圖示</string>
+    <string name="hide_launcher_icon_desc">從桌面隱藏應用程式圖示</string>
+    <string name="launcher_icon_hidden_hint">圖示已隱藏，可從鍵盤設定進入此頁面</string>
+    
+    <!-- 歷史紀錄設定 -->
+    <string name="disable_history">關閉歷史紀錄</string>
+    <string name="disable_history_desc">不記錄最近使用的貼圖</string>
+    <string name="history_disabled_hint">歷史紀錄已關閉</string>
+    
+    <!-- 導入導出 -->
+    <string name="export_data">導出收藏</string>
+    <string name="import_data">導入收藏</string>
+    <string name="export_success">導出成功</string>
+    <string name="export_failed">導出失敗</string>
+    <string name="import_success">導入成功，新增 %d 個貼圖包</string>
+    <string name="import_downloading">開始下載 %d 個貼圖包</string>
+    <string name="import_all_exists">所有貼圖包都已存在</string>
+    <string name="import_failed">導入失敗，檔案格式錯誤</string>
+    <string name="batch_download_title">批量下載</string>
+    <string name="batch_download_preparing">準備中…</string>
+    <string name="batch_download_progress">正在下載：%s</string>
+    <string name="batch_download_complete">下載完成</string>
+    <string name="batch_download_success">✓ %s</string>
+    <string name="batch_download_failed">✗ %s（失敗）</string>
+    <string name="batch_download_skipped">⊘ %s（已存在）</string>
+    <string name="import_confirm">即將下載 %d 個貼圖包，確定要繼續嗎？</string>
+    <string name="no_data_to_export">沒有資料可導出</string>
+    <string name="batch_add_success">成功新增 %d 個貼圖包</string>
+    <string name="batch_add_no_valid_id">未找到有效的商店 ID</string>
+
+    <!-- Emoji 相關 -->
+    <string name="emoji">表情貼</string>
+    <string name="sticker">貼圖</string>
+    <string name="add_emoji">新增表情貼</string>
+    <string name="emoji_collection">表情貼收藏</string>
+    <string name="sticker_collection">貼圖收藏</string>
+    <string name="channel_name_emoji">表情貼下載通知</string>
+    <string name="fetch_fetching_emoji">正在取得表情貼資料…</string>
+    <string name="fetch_downloading_emoji">正在下載表情貼…</string>
+    <string name="fetch_converting_emoji">正在轉換表情貼…</string>
+    <string name="fetch_completed_emoji">表情貼下載完成！</string>
+    <string name="fetch_fetch_failed_emoji">取得表情貼資料失敗</string>
+    <string name="fetch_download_failed_emoji">表情貼下載失敗</string>
+    <string name="fetch_convert_failed_emoji">表情貼轉換失敗</string>
+    <string name="manual_add_emoji_id">新增表情貼包</string>
+    <string name="manual_add_emoji_description">可直接貼上 LINE 表情貼商店連結\n\n支援格式：\n• https://store.line.me/emojishop/product/xxx\n• https://line.me/S/emoji/?id=xxx\n• 或直接輸入 24 位產品 ID\n\n支援多行輸入，每行一個連結</string>
+    <string name="emoji_id_or_link">產品 ID 或連結</string>
+    <string name="delete_emoji">確定要刪除此表情貼包嗎？</string>
+    <string name="empty_emoji_collection">尚無表情貼包</string>
+    <string name="add_emoji_hint">點擊下方按鈕新增表情貼包</string>
+    
+    <!-- 預覽相關 -->
+    <string name="preview">預覽</string>
+    <string name="preview_sticker">預覽貼圖</string>
+    <string name="send">傳送</string>
+    <string name="send_as_png">以 PNG 傳送</string>
+    <string name="long_press_to_preview">長按預覽</string>
+    
+    <!-- 管理頁面 -->
+    <string name="manage_stickers">管理貼圖</string>
+    <string name="manage_emojis">管理表情貼</string>
+    <string name="view_stickers">查看貼圖</string>
+    <string name="sticker_count">%d 個貼圖</string>
+    <string name="emoji_count">%d 個表情貼</string>
+    
+    <!-- 鍵盤分類 -->
+    <string name="tab_stickers">貼圖</string>
+    <string name="tab_emojis">表情貼</string>
+
+    <!-- 整合收藏頁面 -->
+    <string name="title_collection">我的收藏</string>
+    <string name="add">新增</string>
+    <string name="add_pack_title">新增貼圖 / 表情貼</string>
+    <string name="add_pack_description">貼上連結或 ID，系統會自動判斷類型\n\n支援格式：\n• 貼圖：line.me/S/sticker/xxx\n• 表情貼：emojishop/product/xxx\n• 作者頁面：stickershop/author/xxx\n• 作者頁面：line.me/S/shop/sticker/author/xxx\n\n可同時貼上多個，每行一個</string>
+    <string name="add_pack_hint">連結或 ID</string>
+    <string name="add_pack_helper">支援混合輸入貼圖和表情貼</string>
+    <string name="batch_mixed_summary">貼圖 %1$d 個 + 表情貼 %2$d 個</string>
+    <string name="batch_sticker_summary">貼圖 %d 個</string>
+    <string name="batch_emoji_summary">表情貼 %d 個</string>
+    <string name="batch_download_sticker">正在下載貼圖：%d</string>
+    <string name="batch_download_emoji">正在下載表情貼：%s</string>
+    <string name="collection_desc_unified">管理您的貼圖和表情貼</string>
+
+    <!-- 作者頁面解析 -->
+    <string name="author_parser_title">解析作者頁面</string>
+    <string name="author_loading">正在載入頁面…</string>
+    <string name="author_parsing">正在解析內容…</string>
+    <string name="author_no_items">找不到任何項目</string>
+    <string name="author_found_items">找到 %d 個項目</string>
+    <string name="author_parse_failed">解析失敗</string>
+
+    <!-- 重新轉換 GIF -->
+    <string name="reconvert_gif">重新轉換動畫</string>
+    <string name="converting">正在轉換…</string>
+    <string name="convert_complete">轉換完成</string>
+
+    <!-- 首次使用對話框 -->
+    <string name="welcome_to_LSEBoard">歡迎使用 LSEBoard</string>
+    <string name="sticker_keyboard_for_android">Android 貼圖鍵盤</string>
+    <string name="feature_download_stickers">• 下載並收藏 LINE 貼圖與表情貼</string>
+    <string name="feature_dynamic_color">• Material You 動態配色支援</string>
+    <string name="feature_remember_position">• 記憶上次選擇的貼圖包</string>
+    <string name="terms_and_privacy">使用條款與隱私權政策</string>
+    <string name="accept_and_continue">同意並繼續</string>
+    <string name="decline">拒絕</string>
+    <string name="setup_guide_title">設定 LSEBoard 鍵盤</string>
+    <string name="setup_guide_message">您需要在系統設定中啟用 LSEBoard 鍵盤才能使用。\n\n點擊「前往設定」後，請在輸入法清單中找到「LSEBoard」並啟用。</string>
+    <string name="go_to_settings">前往設定</string>
+    <string name="later">稍後</string>
+    <string name="enable_keyboard_msg">要使用 LSEBoard 發送貼圖，您必須先在系統設定中啟用它。點擊下方按鈕前往設定。</string>
+    <string name="import_sticker_title">匯入第一組貼圖</string>
+    <string name="import_sticker_msg">複製 LINE 貼圖小舖的網址，然後點擊下方按鈕即可自動下載。</string>
+    <string name="paste_and_download">貼上並下載</string>
+    <string name="finish_setup">完成設定</string>
+    <string name="skip">跳過</string>
+    <string name="downloading_sticker">開始下載貼圖...</string>
+    <string name="invalid_url">無效的網址，請複製 LINE 貼圖連結</string>
+    <string name="clipboard_empty">剪貼簿是空的</string>
+
+</resources>
+

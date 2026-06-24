@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Material 3 2026 夜間主題 -->
+    <style name="Theme.LSEBoard" parent="Theme.Material3.Dark.NoActionBar">
+        <!-- Edge-to-Edge System Handled -->
+        
+        <!-- Shape System -->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.LSEBoard.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.LSEBoard.MediumComponent</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.LSEBoard.LargeComponent</item>
+        
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.LSEBoard.MaterialAlertDialog</item>
+        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.LSEBoard.BottomSheetDialog</item>
+        <item name="materialCardViewStyle">@style/Widget.LSEBoard.CardView</item>
+        <item name="floatingActionButtonStyle">@style/Widget.LSEBoard.FloatingActionButton</item>
+    </style>
+
+    <!-- 鍵盤夜間主題 -->
+    <style name="Theme.LSEBoard.Keyboard" parent="Theme.Material3.Dark.NoActionBar">
+        <!-- Ensure surface is dark dynamic container -->
+        <item name="android:windowBackground">?attr/colorSurfaceContainerHigh</item>
+        <item name="android:navigationBarColor">?attr/colorSurfaceContainerHigh</item>
+        <item name="android:windowIsFloating">false</item>
+        
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.LSEBoard.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.LSEBoard.MediumComponent</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.LSEBoard.LargeComponent</item>
+    </style>
+</resources>
+

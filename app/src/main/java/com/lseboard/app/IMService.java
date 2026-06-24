@@ -1,0 +1,281 @@
+package com.lseboard.app;
+
+import android.app.AlertDialog;
+import android.content.BroadcastReceiver;
+import android.content.ClipDescription;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.inputmethodservice.InputMethodService;
+import android.net.Uri;
+import android.os.Build;
+import android.util.Log;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputConnection;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.core.content.FileProvider;
+import androidx.core.view.inputmethod.EditorInfoCompat;
+import androidx.core.view.inputmethod.InputConnectionCompat;
+import androidx.core.view.inputmethod.InputContentInfoCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
+import java.io.File;
+
+import com.lseboard.app.Model.Emoji;
+import com.lseboard.app.Model.Sticker;
+import com.lseboard.app.Util.FileHelper;
+import com.lseboard.app.Util.SharedPrefHelper;
+import com.lseboard.app.View.StickerKeyboardView;
+
+public class IMService extends InputMethodService {
+
+    private static final String TAG = "ImageKeyboard";
+    private static final String AUTHORITY = "com.lseboard.app";
+    private static final String MIME_TYPE_PNG = "image/png";
+    private static final String MIME_TYPE_GIF = "image/gif";
+    private StickerKeyboardView stickerKeyboardView;
+    Receiver receiver;
+    Context context = this;
+
+    /* ImageKeyboard Google Samples
+     * https://github.com/googlesamples/android-CommitContentSampleIME/
+     */
+    public void postSticker(Sticker sticker, boolean saveHistory, boolean forcePng) {
+        // Launch Main Activity for disclaimer
+        if (!SharedPrefHelper.getDisclaimerStatus(this)) {
+            Toast.makeText(this, getString(R.string.disclaimer_toast), Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, MainActivity.class);
+            // Flag needed by older Android
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        } else {
+            boolean isPng = isCommitContentSupported(MIME_TYPE_PNG);
+            boolean isGif = isCommitContentSupported(MIME_TYPE_GIF);
+            if (sticker.getType() == Sticker.Type.STATIC || forcePng) {
+                if (isPng) {
+                    File file = FileHelper.getPngFile(this, sticker.getId());
+                    doCommitContent(file, MIME_TYPE_PNG);
+                } else {
+                    Toast.makeText(this, getString(R.string.not_supported), Toast.LENGTH_SHORT).show();
+                    File file = FileHelper.getPngFile(this, sticker.getId());
+                    createShareIntent(file, MIME_TYPE_PNG);
+                }
+            } else {
+                if (isGif) {
+                    File file = FileHelper.getFile(this, sticker);
+                    doCommitContent(file, MIME_TYPE_GIF);
+                } else if (isPng) {
+                    File file = FileHelper.getPngFile(this, sticker.getId());
+                    doCommitContent(file, MIME_TYPE_PNG);
+                } else {
+                    Toast.makeText(this, getString(R.string.not_supported), Toast.LENGTH_SHORT).show();
+                    File file = FileHelper.getFile(this, sticker);
+                    createShareIntent(file, MIME_TYPE_GIF);
+                }
+
+            }
+            if (saveHistory) {
+                SharedPrefHelper.addStickerToHistory(this, sticker);
+                stickerKeyboardView.refreshHistoryAdapter(sticker);
+            }
+        }
+    }
+
+    /**
+     * 傳送 Emoji
+     */
+    public void postEmoji(Emoji emoji, boolean forcePng) {
+        // Launch Main Activity for disclaimer
+        if (!SharedPrefHelper.getDisclaimerStatus(this)) {
+            Toast.makeText(this, getString(R.string.disclaimer_toast), Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        } else {
+            boolean isPng = isCommitContentSupported(MIME_TYPE_PNG);
+            boolean isGif = isCommitContentSupported(MIME_TYPE_GIF);
+            
+            if (emoji.getType() == Emoji.Type.STATIC || forcePng) {
+                if (isPng) {
+                    File file = FileHelper.getEmojiPngFile(this, emoji.getProductId(), emoji.getId());
+                    doCommitContent(file, MIME_TYPE_PNG);
+                } else {
+                    Toast.makeText(this, getString(R.string.not_supported), Toast.LENGTH_SHORT).show();
+                    File file = FileHelper.getEmojiPngFile(this, emoji.getProductId(), emoji.getId());
+                    createShareIntent(file, MIME_TYPE_PNG);
+                }
+            } else {
+                if (isGif) {
+                    File file = FileHelper.getEmojiFile(this, emoji);
+                    doCommitContent(file, MIME_TYPE_GIF);
+                } else if (isPng) {
+                    File file = FileHelper.getEmojiPngFile(this, emoji.getProductId(), emoji.getId());
+                    doCommitContent(file, MIME_TYPE_PNG);
+                } else {
+                    Toast.makeText(this, getString(R.string.not_supported), Toast.LENGTH_SHORT).show();
+                    File file = FileHelper.getEmojiFile(this, emoji);
+                    createShareIntent(file, MIME_TYPE_GIF);
+                }
+            }
+        }
+    }
+
+    private void createShareIntent(File file, String mimeType) {
+        final EditorInfo editorInfo = getCurrentInputEditorInfo();
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setPackage(editorInfo.packageName);
+        shareIntent.setType(mimeType);
+        shareIntent.putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(this, "com.lseboard.app", file));
+        Intent chooser = Intent.createChooser(shareIntent, getString(R.string.share));
+        // Flag needed by older Android
+        chooser.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(chooser);
+    }
+
+    private boolean isCommitContentSupported(String mimeType) {
+        final EditorInfo editorInfo = getCurrentInputEditorInfo();
+        if (editorInfo == null) {
+            return false;
+        }
+
+        final InputConnection ic = getCurrentInputConnection();
+        if (ic == null) {
+            return false;
+        }
+
+        final String[] supportedMimeTypes = EditorInfoCompat.getContentMimeTypes(editorInfo);
+        for (String supportedMimeType : supportedMimeTypes) Log.d("Supported", supportedMimeType);
+        for (String supportedMimeType : supportedMimeTypes) {
+            if (ClipDescription.compareMimeTypes(mimeType, supportedMimeType)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void doCommitContent(@NonNull File file, String mimeType) {
+        final EditorInfo editorInfo = getCurrentInputEditorInfo();
+        final Uri contentUri = FileProvider.getUriForFile(this, AUTHORITY, file);
+        final int flag;
+        if (Build.VERSION.SDK_INT >= 25) {
+            flag = InputConnectionCompat.INPUT_CONTENT_GRANT_READ_URI_PERMISSION;
+        } else {
+            flag = 0;
+            try {
+                grantUriPermission(
+                        editorInfo.packageName, contentUri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            } catch (Exception e) {
+                Log.e(TAG, "grantUriPermission failed packageName=" + editorInfo.packageName
+                        + " contentUri=" + contentUri, e);
+            }
+        }
+
+        final InputContentInfoCompat inputContentInfoCompat = new InputContentInfoCompat(
+                contentUri,
+                new ClipDescription("lineSticker", new String[]{mimeType}), null);
+        InputConnectionCompat.commitContent(
+                getCurrentInputConnection(), getCurrentInputEditorInfo(), inputContentInfoCompat,
+                flag, null);
+    }
+
+    @Override
+    public View onCreateInputView() {
+        stickerKeyboardView = new StickerKeyboardView(this);
+        return stickerKeyboardView;
+    }
+
+    @Override
+    public void onStartInput(EditorInfo attribute, boolean restarting) {
+        super.onStartInput(attribute, restarting);
+    }
+
+    /* https://stackoverflow.com/questions/3494476/android-ime-how-to-show-a-pop-up-dialog
+       https://stackoverflow.com/questions/51906586/display-dialog-from-input-method-service-in-android-9-android-pie
+       NOTE: Might causing bug on Android 9
+     */
+
+    public void showSettingDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.app_name)
+                .setItems(R.array.settings_array, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        switch (i) {
+                            case 0:
+                                Intent intent = new Intent(IMService.this, MainActivity.class);
+                                // Flag needed by older Android
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                IMService.this.startActivity(intent);
+                                break;
+                            case 1:
+                                InputMethodManager im = (InputMethodManager) IMService.this.getSystemService(INPUT_METHOD_SERVICE);
+                                if (im != null) {
+                                    im.showInputMethodPicker();
+                                }
+                                break;
+                        }
+                    }
+                }).setIcon(R.mipmap.ic_launcher);
+        AlertDialog dialog = builder.create();
+
+        // Workaround for IMService + AlertDialog
+        Window window = dialog.getWindow();
+        WindowManager.LayoutParams lp;
+        if (window != null) {
+            lp = window.getAttributes();
+            lp.token = stickerKeyboardView.getWindowToken();
+            lp.type = WindowManager.LayoutParams.TYPE_APPLICATION_ATTACHED_DIALOG;
+            window.setAttributes(lp);
+            window.addFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+            dialog.show();
+        }
+        //
+    }
+
+    public void launchMainMenu(){
+        Intent intent = new Intent(IMService.this, MainActivity.class);
+        // Flag needed by older Android
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        IMService.this.startActivity(intent);
+    }
+
+    public void showIMPicker(){
+        InputMethodManager im = (InputMethodManager) IMService.this.getSystemService(INPUT_METHOD_SERVICE);
+        if (im != null) {
+            im.showInputMethodPicker();
+        }
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        // Broadcast Receiver
+        IntentFilter filter = new IntentFilter(FetchService.BROADCAST_ACTION);
+        receiver = new Receiver();
+        LocalBroadcastManager.getInstance(this).registerReceiver(receiver, filter);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(receiver);
+    }
+
+    private class Receiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            // Restart everything, thanks for this.
+            // https://stackoverflow.com/questions/20288655/how-to-restart-oncreateinputview
+            setInputView(onCreateInputView());
+        }
+    }
+}
+

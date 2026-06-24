@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ========== Material 3 2026 Dynamic Color System ========== -->
+    <!-- The colors here act as a fallback when Dynamic Colors are unavailable -->
+    
+    <color name="md_theme_light_primary">#6750A4</color>
+    <color name="md_theme_light_onPrimary">#FFFFFF</color>
+    <color name="md_theme_light_primaryContainer">#EADDFF</color>
+    <color name="md_theme_light_onPrimaryContainer">#21005D</color>
+    
+    <color name="md_theme_dark_primary">#D0BCFF</color>
+    <color name="md_theme_dark_onPrimary">#381E72</color>
+    <color name="md_theme_dark_primaryContainer">#4F378B</color>
+    <color name="md_theme_dark_onPrimaryContainer">#EADDFF</color>
+    
+    <!-- Surface & Containers - Essential for M3 Expressive -->
+    <color name="md_theme_light_surface">#FEF7FF</color>
+    <color name="md_theme_light_onSurface">#1D1B20</color>
+    <color name="md_theme_light_surfaceVariant">#E7E0EC</color>
+    <color name="md_theme_light_onSurfaceVariant">#49454F</color>
+    
+    <color name="md_theme_dark_surface">#141218</color>
+    <color name="md_theme_dark_onSurface">#E6E0E9</color>
+    <color name="md_theme_dark_surfaceVariant">#49454F</color>
+    <color name="md_theme_dark_onSurfaceVariant">#CAC4D0</color>
+
+    <!-- ========== Keyboard Specific M3 Expressive Colors ========== -->
+    <!-- We remove hardcoded #1C1B1F and rely on dynamic surface container colors in themes.xml -->
+    <color name="stickerBackground">#FFF7F8FA</color>
+    <color name="stickerBackgroundDark">#FF2A2A2E</color>
+    <color name="stickerBackgroundLight">#FFF7F8FA</color>
+    
+    <!-- Legacy compatibility colors for drawables -->
+    <color name="colorIMBackground">#1C1B1F</color>
+    <color name="colorIMTabLayout">#2B2930</color>
+    <color name="colorIMTabIndicator">#D0BCFF</color>
+    
+    <!-- Legacy compatibility colors -->
+    <color name="colorPrimary">#6750A4</color>
+    <color name="colorPrimaryDark">#4F378B</color>
+    <color name="colorAccent">#625B71</color>
+    <color name="colorLoading">#9E9E9E</color>
+    <color name="colorError">#F2B8B5</color>
+    <color name="ripple_color">#1F000000</color>
+    <color name="ripple_color_dark">#1FFFFFFF</color>
+    <color name="transparent">#00000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+</resources>

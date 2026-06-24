@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fitsSystemWindows="true">
+
+    <!-- 鍵盤主體 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="?attr/colorSurfaceContainerHigh">
+
+        <!-- 貼圖顯示區域 -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent" />
+
+        </FrameLayout>
+
+        <!-- 底部控制列 - M3 Expressive -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="?attr/colorSurfaceContainer"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp">
+
+            <!-- 設定按鈕 -->
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/baseline_settings_24"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/settings"
+                android:scaleType="centerInside"
+                android:padding="12dp"
+                android:tint="?attr/colorOnSurfaceVariant" />
+
+            <!-- 貼圖 Tab 列表容器 -->
+            <FrameLayout
+                android:id="@+id/tabLayoutStickersContainer"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabLayoutStickers"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    app:tabMode="scrollable"
+                    app:tabGravity="center"
+                    app:tabIndicatorAnimationMode="elastic"
+                    app:tabIndicatorHeight="4dp"
+                    app:tabMinWidth="48dp"
+                    app:tabMaxWidth="56dp"
+                    app:tabPaddingStart="4dp"
+                    app:tabPaddingEnd="4dp"
+                    app:tabRippleColor="?attr/colorPrimaryContainer" />
+
+            </FrameLayout>
+
+            <!-- Emoji Tab 列表容器 -->
+            <FrameLayout
+                android:id="@+id/tabLayoutEmojisContainer"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:visibility="gone">
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabLayoutEmojis"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    app:tabMode="scrollable"
+                    app:tabGravity="center"
+                    app:tabIndicatorAnimationMode="elastic"
+                    app:tabIndicatorHeight="4dp"
+                    app:tabMinWidth="48dp"
+                    app:tabMaxWidth="56dp"
+                    app:tabPaddingStart="4dp"
+                    app:tabPaddingEnd="4dp"
+                    app:tabRippleColor="?attr/colorTertiaryContainer" />
+
+            </FrameLayout>
+
+            <!-- 分類切換按鈕（貼圖/Emoji） -->
+            <ImageButton
+                android:id="@+id/btnSwitchCategory"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/baseline_emoji_emotions_24"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/tab_emojis"
+                android:scaleType="centerInside"
+                android:padding="12dp"
+                android:tint="?attr/colorOnSurfaceVariant" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- 設定面板 - 覆蓋層 (置於最上層疊加) -->
+    <FrameLayout
+        android:id="@+id/panel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#A6000000"
+        android:visibility="invisible"
+        android:clickable="true"
+        android:focusable="true"
+        android:elevation="8dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:cardCornerRadius="28dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="?attr/colorSurfaceContainerHigh"
+            app:strokeWidth="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="24dp"
+                    android:text="@string/settings"
+                    android:textAppearance="?attr/textAppearanceHeadlineSmall"
+                    android:textColor="?attr/colorOnSurface" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnMenu"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:text="@string/setting_list_0"
+                    android:textSize="16sp"
+                    app:cornerRadius="16dp"
+                    app:icon="@drawable/baseline_home_24"
+                    app:iconSize="24dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSwitch"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/setting_list_1"
+                    android:textSize="16sp"
+                    app:cornerRadius="16dp"
+                    app:icon="@drawable/baseline_keyboard_24"
+                    app:iconSize="24dp" />
+
+                <TextView
+                    android:id="@+id/tvVersion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </FrameLayout>
+
+</FrameLayout>

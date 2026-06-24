@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <files-path
+        name="my_png"
+        path="png/" />
+    <files-path
+        name="my_gif"
+        path="gif/" />
+    <files-path
+        name="my_emoji"
+        path="emoji/" />
+    <files-path
+        name="my_emoji_gif"
+        path="emoji_gif/" />
+    <cache-path
+        name="sticker_send"
+        path="sticker_send/" />
+    <cache-path
+        name="emoji_send"
+        path="emoji_send/" />
+</paths>

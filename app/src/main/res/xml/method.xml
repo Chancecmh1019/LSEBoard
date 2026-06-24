@@ -1,0 +1,15 @@
+<input-method xmlns:android="http://schemas.android.com/apk/res/android"
+    android:icon="@mipmap/ic_launcher"
+    android:settingsActivity="com.lseboard.app.MainActivity">
+
+    <!-- Create an IME subtype example
+    <subtype
+        android:label="@string/label_subtype_generic"
+        android:imeSubtypeLocale="en_US"
+        android:icon="@drawable/icon_en_us"
+        android:imeSubtypeMode="keyboard" />
+    -->
+    <subtype
+        android:icon="@mipmap/ic_launcher"
+        android:imeSubtypeMode="keyboard" />
+</input-method>

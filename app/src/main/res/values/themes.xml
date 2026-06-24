@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Material 3 2026 主題 - Dynamic Color with Expressive Design -->
+    <style name="Theme.LSEBoard" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Edge-to-Edge System Handled -->
+        
+        <!-- Shape System (M3 Expressive 24dp-28dp) -->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.LSEBoard.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.LSEBoard.MediumComponent</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.LSEBoard.LargeComponent</item>
+        
+        <!-- Component Overrides -->
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.LSEBoard.MaterialAlertDialog</item>
+        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.LSEBoard.BottomSheetDialog</item>
+        <item name="materialCardViewStyle">@style/Widget.LSEBoard.CardView</item>
+        <item name="floatingActionButtonStyle">@style/Widget.LSEBoard.FloatingActionButton</item>
+    </style>
+
+    <!-- 鍵盤主題 - 完美繼承 M3 Expressive 動態色彩 -->
+    <style name="Theme.LSEBoard.Keyboard" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Use SurfaceContainerHigh for Keyboard background per M3 Expressive guidelines -->
+        <item name="android:windowBackground">?attr/colorSurfaceContainerHigh</item>
+        <item name="android:navigationBarColor">?attr/colorSurfaceContainerHigh</item>
+        <item name="android:windowIsFloating">false</item>
+        
+        <!-- Shapes -->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.LSEBoard.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.LSEBoard.MediumComponent</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.LSEBoard.LargeComponent</item>
+    </style>
+
+    <!-- ========== Material 3 2026 Expressive 形狀系統 ========== -->
+    <style name="ShapeAppearance.LSEBoard.SmallComponent" parent="ShapeAppearance.Material3.Corner.Small">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+
+    <style name="ShapeAppearance.LSEBoard.MediumComponent" parent="ShapeAppearance.Material3.Corner.Medium">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">24dp</item>
+    </style>
+
+    <style name="ShapeAppearance.LSEBoard.LargeComponent" parent="ShapeAppearance.Material3.Corner.Large">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">28dp</item>
+    </style>
+
+    <!-- ========== Material 3 組件樣式 ========== -->
+    <style name="ThemeOverlay.LSEBoard.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog.Centered">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.Material3.Corner.ExtraLarge</item>
+    </style>
+
+    <style name="ThemeOverlay.LSEBoard.BottomSheetDialog" parent="ThemeOverlay.Material3.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/Widget.Material3.BottomSheet</item>
+    </style>
+
+    <!-- Cards -> M3 Filled by default for soft expressive look -->
+    <style name="Widget.LSEBoard.CardView" parent="Widget.Material3.CardView.Filled">
+        <item name="shapeAppearance">@style/ShapeAppearance.LSEBoard.LargeComponent</item>
+    </style>
+    
+    <style name="Widget.LSEBoard.FloatingActionButton" parent="Widget.Material3.FloatingActionButton.Primary">
+        <item name="shapeAppearance">@style/ShapeAppearance.LSEBoard.LargeComponent</item>
+    </style>
+
+    <style name="MyTheme" parent="Theme.LSEBoard" />
+    <style name="AppTheme" parent="Theme.LSEBoard" />
+    <style name="AppTheme.NoActionBar" parent="Theme.LSEBoard" />
+</resources>
+

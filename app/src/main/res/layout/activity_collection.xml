@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="?attr/colorSurface">
+
+    <!-- AppBar -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        app:liftOnScroll="true"
+        app:elevation="0dp"
+        style="@style/Widget.Material3.AppBarLayout">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="152dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            app:titleCollapseMode="fade"
+            app:collapsedTitleTextAppearance="?attr/textAppearanceTitleLarge"
+            app:expandedTitleTextAppearance="?attr/textAppearanceHeadlineLarge"
+            app:contentScrim="?attr/colorSurface"
+            app:statusBarScrim="?attr/colorSurface"
+            app:expandedTitleMarginStart="24dp"
+            app:expandedTitleMarginBottom="28dp">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:title="@string/title_collection"
+                app:navigationIcon="@drawable/baseline_arrow_back_24"
+                app:navigationIconTint="?attr/colorOnSurface"
+                android:background="@android:color/transparent" />
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        <!-- 分類 Tab -->
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorSurface"
+            app:tabMode="fixed"
+            app:tabGravity="fill"
+            app:tabIndicatorColor="?attr/colorPrimary"
+            app:tabIndicatorAnimationMode="elastic"
+            app:tabTextAppearance="?attr/textAppearanceTitleSmall"
+            app:tabSelectedTextColor="?attr/colorPrimary"
+            app:tabTextColor="?attr/colorOnSurfaceVariant"
+            app:tabRippleColor="?attr/colorPrimaryContainer" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- ViewPager2 -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <!-- FAB -->
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fabAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="24dp"
+        android:text="@string/add"
+        android:contentDescription="@string/add_pack_title"
+        android:backgroundTint="?attr/colorPrimaryContainer"
+        android:textColor="?attr/colorOnPrimaryContainer"
+        app:icon="@drawable/baseline_add_24"
+        app:iconTint="?attr/colorOnPrimaryContainer"
+        app:iconSize="24dp"
+        app:cornerRadius="28dp"
+        app:elevation="6dp" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

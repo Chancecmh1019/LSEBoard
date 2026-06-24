@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Material 3 Expressive 按鈕樣式 -->
+    <style name="Widget.LSEBoard.Button" parent="Widget.Material3.Button">
+        <item name="cornerRadius">28dp</item>
+    </style>
+
+    <style name="Widget.LSEBoard.Button.Tonal" parent="Widget.Material3.Button.TonalButton">
+        <item name="cornerRadius">28dp</item>
+    </style>
+
+    <style name="Widget.LSEBoard.Button.Outlined" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="cornerRadius">28dp</item>
+    </style>
+
+    <style name="Widget.LSEBoard.Button.Text" parent="Widget.Material3.Button.TextButton">
+    </style>
+
+    <!-- 貼圖項目樣式 -->
+    <style name="StickerItemStyle">
+        <item name="android:background">@drawable/sticker_background</item>
+        <item name="android:padding">4dp</item>
+    </style>
+</resources>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 預設螢幕邊距 -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    
+    <!-- 貼圖尺寸 - 調整為更合適的大小 -->
+    <dimen name="sticker_size">80dp</dimen>
+    
+    <!-- 間距 -->
+    <dimen name="default_padding">4dp</dimen>
+    <dimen name="appbar_padding_top">8dp</dimen>
+    <dimen name="item_offset_x">4dp</dimen>
+    <dimen name="item_offset_y">4dp</dimen>
+    
+    <!-- Material 3 Expressive 圓角 -->
+    <dimen name="corner_small">12dp</dimen>
+    <dimen name="corner_medium">16dp</dimen>
+    <dimen name="corner_large">24dp</dimen>
+</resources>
