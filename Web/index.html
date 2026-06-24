@@ -3,69 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LSEBoard - 輕鬆分享您喜愛的貼圖與表情貼</title>
-    <meta name="description" content="LSEBoard 是一款 Android 貼圖鍵盤，支援快速下載與管理 LINE 貼圖及表情貼。採用最新 Material 3 設計語言。">
+    <title>LSEBoard - 專屬您的 Android 貼圖鍵盤</title>
+    <meta name="description" content="LSEBoard 是一款完美的 Android 貼圖鍵盤，支援一鍵下載 LINE 貼圖與表情貼，完全遵守 Material 3 設計與極致的本地隱私保護。">
     <link rel="stylesheet" href="css/style.css">
+    <!-- M3 Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" rel="stylesheet" />
 </head>
 <body>
-    <div class="bg-blob bg-blob-1"></div>
-    <div class="bg-blob bg-blob-2"></div>
-
     <nav>
         <a href="index.html" class="nav-logo">
-            <!-- Icon placeholder: User will provide app icon here -->
-            <img src="images/icon.png" alt="LSEBoard Icon" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48cmVjdCB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHJ4PSIyMCIgZmlsbD0iIzVhNWNlNSIvPjwvc3ZnPg=='">
+            <img src="images/icon.png" alt="LSEBoard Icon" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48cmVjdCB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHJ4PSIyMCIgZmlsbD0iIzUxNTRFMSIvPjwvc3ZnPg=='">
             LSEBoard
         </a>
         <div class="nav-links">
-            <a href="#features">功能特色</a>
+            <a href="#how-it-works">如何運作</a>
+            <a href="#features">核心功能</a>
             <a href="privacy-policy.html">隱私權政策</a>
         </div>
     </nav>
 
     <section class="hero">
         <div class="hero-content reveal">
-            <h1>讓您的聊天<br>更生動有趣</h1>
-            <p class="lead">LSEBoard 是一款為 Android 打造的專屬貼圖鍵盤。一鍵下載、統一管理，隨時隨地在任何通訊軟體中傳送您最愛的 LINE 貼圖與表情貼。</p>
-            <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-                <a href="#" class="btn btn-primary">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                    下載 APK
+            <h1 class="display-large">讓對話不再單調，<br>隨時釋放無限貼圖。</h1>
+            <p class="body-large" style="margin-top: 24px; max-width: 600px;">
+                突破原生鍵盤的限制！LSEBoard 是專為 Android 打造的第三方貼圖鍵盤。只需複製連結，便能一鍵下載喜愛的貼圖與表情貼，無縫接軌您的日常對話。
+            </p>
+            <div class="hero-actions">
+                <a href="https://github.com/Chancecmh1019/LSEBoard/releases/latest/download/app-release.apk" class="m3-btn btn-filled">
+                    <span class="material-symbols-rounded">download</span>
+                    下載 APK 體驗版
                 </a>
-                <a href="#features" class="btn btn-tonal">了解更多</a>
+                <a href="#how-it-works" class="m3-btn btn-tonal">
+                    <span class="material-symbols-rounded">explore</span>
+                    深入了解
+                </a>
             </div>
         </div>
         <div class="hero-image reveal">
-            <!-- Mockup placeholder: User will provide phone mockup/screenshot here -->
-            <div style="width: 300px; height: 600px; background: rgba(255,255,255,0.8); border-radius: 40px; border: 8px solid #1a1b21; display: flex; align-items: center; justify-content: center; box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
-                <p style="color: #1a1b21; font-weight: 600;">App 畫面截圖<br>(請於 images/mockup.png 替換)</p>
+            <div class="mockup-container">
+                <div>
+                    <span class="material-symbols-rounded" style="font-size: 64px; color: var(--md-sys-color-primary);">smartphone</span>
+                    <p class="title-large" style="margin-top: 16px;">App 畫面截圖<br>(請替換 images/mockup.png)</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="features" class="features">
-        <h2 class="reveal" style="text-align: center;">為什麼選擇 LSEBoard？</h2>
+    <!-- How it Works -->
+    <section id="how-it-works" class="steps-section">
+        <div style="text-align: center; max-width: 800px; margin: 0 auto;" class="reveal">
+            <h2 class="headline-large">三步驟，立刻解鎖專屬貼圖庫</h2>
+            <p class="body-large" style="margin-top: 16px;">不需要繁雜的設定，LSEBoard 的設計讓下載貼圖變得前所未有的直覺與簡單。</p>
+        </div>
+        <div class="steps-container">
+            <div class="step-item reveal">
+                <div class="step-number">1</div>
+                <h3 class="title-large">複製連結</h3>
+                <p class="body-large">在 LINE 貼圖小舖中，找到您喜歡的貼圖或表情貼，點擊「分享」並複製連結。</p>
+            </div>
+            <div class="step-item reveal">
+                <div class="step-number">2</div>
+                <h3 class="title-large">自動下載</h3>
+                <p class="body-large">開啟 LSEBoard，貼上連結。系統會自動抓取 ID 並在背景高速下載與轉換所有圖檔。</p>
+            </div>
+            <div class="step-item reveal">
+                <div class="step-number">3</div>
+                <h3 class="title-large">鍵盤傳送</h3>
+                <p class="body-large">切換至 LSEBoard 鍵盤，在任何支援圖片的通訊軟體 (Messenger, Telegram 等) 中立刻使用！</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="features-section">
+        <h2 class="headline-large reveal" style="text-align: center; margin-bottom: 24px;">探索更多極致體驗</h2>
         <div class="features-grid">
-            <div class="feature-card reveal">
+            <div class="m3-card card-elevated reveal">
                 <div class="feature-icon">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    <span class="material-symbols-rounded">palette</span>
                 </div>
-                <h3>Material 3 設計</h3>
-                <p>完美支援 Android 12+ 的動態色彩 (Dynamic Color)，介面隨您的桌布自動變換色彩，提供最極致的視覺體驗。</p>
+                <h3 class="headline-medium">原生 M3 動態色彩</h3>
+                <p class="body-large" style="margin-top: 12px;">完美支援 Android 12 以上的 Dynamic Color。整個 App 與鍵盤的色調會跟隨您的系統桌布自動變化，每一次打開都有驚喜。</p>
             </div>
-            <div class="feature-card reveal">
+            
+            <div class="m3-card card-filled reveal">
                 <div class="feature-icon">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                    <span class="material-symbols-rounded">animation</span>
                 </div>
-                <h3>快速下載與轉換</h3>
-                <p>只需貼上商店連結，系統即會自動幫您下載貼圖包並在背景完成轉檔，無縫接軌您的日常對話。</p>
+                <h3 class="headline-medium">動態貼圖與表情貼</h3>
+                <p class="body-large" style="margin-top: 12px;">不只是靜態圖片！LSEBoard 支援 APNG 自動轉換 GIF 功能，讓您的動態貼圖在各種聊天室中完美呈現。</p>
             </div>
-            <div class="feature-card reveal">
+            
+            <div class="m3-card card-elevated reveal">
                 <div class="feature-icon">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    <span class="material-symbols-rounded">history</span>
                 </div>
-                <h3>極致隱私保護</h3>
-                <p>所有的貼圖資料皆存放在您的本地裝置。我們不收集您的個資、不讀取您的聯絡人，也不追蹤您的位置。</p>
+                <h3 class="headline-medium">歷史紀錄與收藏</h3>
+                <p class="body-large" style="margin-top: 12px;">鍵盤內建強大的歷史紀錄功能，快速存取您最常使用的貼圖。還可以自由排序貼圖包，打造最順手的佈局。</p>
+            </div>
+            
+            <div class="m3-card card-filled reveal">
+                <div class="feature-icon">
+                    <span class="material-symbols-rounded">shield_lock</span>
+                </div>
+                <h3 class="headline-medium">100% 本地隱私</h3>
+                <p class="body-large" style="margin-top: 12px;">所有的資料都只儲存在您的手機中。我們絕不收集您的打字內容，也不會請求您的聯絡人或位置權限，極致安全。</p>
             </div>
         </div>
     </section>
@@ -76,7 +118,7 @@
             <a href="data-safety.html">資料安全與聲明 (Data Safety)</a>
             <a href="account-deletion.html">帳戶刪除聲明 (Account Deletion)</a>
         </div>
-        <p style="color: var(--md-sys-color-on-surface-variant); font-size: 0.9rem;">
+        <p class="body-large" style="font-size: 0.9rem;">
             &copy; 2026 LSEBoard by Chancecmh1019. All rights reserved.<br>
             Developer Contact: waitamin.studio@gmail.com
         </p>
