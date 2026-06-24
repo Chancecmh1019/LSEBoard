@@ -11,17 +11,29 @@ android {
         minSdk 24
         targetSdk 35
         versionCode 1
-        versionName "1.0.0"
+        versionName "0.0.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
 
 
 
+    signingConfigs {
+        release {
+            // 請填入您的金鑰資訊
+            storeFile file('YOUR_KEYSTORE_PATH.jks')  // 例：file('/path/to/lseboard.jks')
+            storePassword 'YOUR_STORE_PASSWORD'
+            keyAlias 'YOUR_KEY_ALIAS'
+            keyPassword 'YOUR_KEY_PASSWORD'
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            // 若已填入金鑰資訊，請取消下方註解
+            // signingConfig signingConfigs.release
         }
     }
 
