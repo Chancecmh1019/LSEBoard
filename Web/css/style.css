@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;500;600;700;800&display=swap');
 
 :root {
     /* Material 3 Color Tokens - Dynamic Purple/Blue theme */
@@ -68,7 +68,7 @@
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Noto Serif', serif;
     background-color: var(--md-sys-color-background);
     color: var(--md-sys-color-on-background);
     line-height: 1.6;
@@ -351,27 +351,47 @@ footer {
     transform: translateY(0);
 }
 
+@media (max-width: 992px) {
+    .features-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 24px;
+    }
+}
+
 @media (max-width: 768px) {
     .hero {
         flex-direction: column;
         text-align: center;
-        padding-top: 140px;
+        padding: 120px 5% 60px;
     }
     .hero-content {
         padding-right: 0;
-        margin-bottom: 60px;
+        margin-bottom: 40px;
     }
     .hero-image img {
         transform: none;
+        max-width: 80%;
     }
     .hero-image img:hover {
         transform: scale(1.02);
     }
     .legal-container {
-        margin: 120px 5% 60px;
+        margin: 100px 5% 60px;
         padding: 24px;
     }
     .nav-links {
-        display: none; /* Hide on mobile for simplicity, or implement hamburger */
+        display: none; /* Can be expanded into a hamburger menu later if needed */
+    }
+    .feature-card {
+        padding: 30px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2.2rem;
+    }
+    .hero-image img {
+        max-width: 100%;
     }
 }
