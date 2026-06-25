@@ -471,7 +471,7 @@ public class PackDetailActivity extends AppCompatActivity {
                     recyclerStickers.getAdapter().notifyDataSetChanged();
                 }
             });
-        });
+        }).start();
     }
 }
 
