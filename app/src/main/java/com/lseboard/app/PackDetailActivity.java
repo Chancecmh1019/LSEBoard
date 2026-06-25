@@ -1,7 +1,6 @@
 package com.lseboard.app;
 
 import android.app.Dialog;
-import android.app.ProgressDialog;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -32,11 +31,11 @@ import com.bumptech.glide.request.target.Target;
 import com.bumptech.glide.signature.ObjectKey;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.progressindicator.LinearProgressIndicator;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 import com.lseboard.app.Model.Emoji;
 import com.lseboard.app.Model.EmojiPack;
@@ -383,7 +382,7 @@ public class PackDetailActivity extends AppCompatActivity {
         
         if (isAnimated) {
             menu.add(0, 1, 0, R.string.reconvert_gif)
-                    .setIcon(R.drawable.baseline_swap_horiz_24)
+                    .setIcon(R.drawable.ic_m3_refresh)
                     .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
         }
         return true;
@@ -399,22 +398,27 @@ public class PackDetailActivity extends AppCompatActivity {
     }
 
     private void reconvertGif() {
-        ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage(getString(R.string.converting));
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-        progressDialog.setCancelable(false);
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_progress_m3, null);
+        LinearProgressIndicator progressIndicator = dialogView.findViewById(R.id.progressIndicator);
+        
+        androidx.appcompat.app.AlertDialog progressDialog = new MaterialAlertDialogBuilder(this)
+                .setView(dialogView)
+                .setCancelable(false)
+                .create();
+                
         progressDialog.show();
 
-        ExecutorService executor = Executors.newSingleThreadExecutor();
-        Handler handler = new Handler(Looper.getMainLooper());
-
-        executor.execute(() -> {
+        new Thread(() -> {
+            Handler handler = new Handler(Looper.getMainLooper());
             Apng2GifCustom converter = new Apng2GifCustom();
             
             if (TYPE_STICKER.equals(packType) && stickerPack != null) {
                 ArrayList<Integer> ids = stickerPack.getIds();
                 int total = ids.size();
-                handler.post(() -> progressDialog.setMax(total));
+                handler.post(() -> {
+                    progressIndicator.setMax(total);
+                    progressIndicator.setProgress(0);
+                });
                 
                 File pngDir = new File(getFilesDir(), "png");
                 File gifDir = new File(getFilesDir(), "gif");
@@ -425,19 +429,19 @@ public class PackDetailActivity extends AppCompatActivity {
                     File png = new File(pngDir, id + ".png");
                     File gif = new File(gifDir, id + ".gif");
                     
-                    // 刪除舊的 GIF
                     if (gif.exists()) gif.delete();
-                    
-                    // 重新轉換
                     converter.start(png, gif);
                     
                     int progress = i + 1;
-                    handler.post(() -> progressDialog.setProgress(progress));
+                    handler.post(() -> progressIndicator.setProgress(progress));
                 }
             } else if (TYPE_EMOJI.equals(packType) && emojiPack != null) {
                 ArrayList<Integer> ids = emojiPack.getIds();
                 int total = ids.size();
-                handler.post(() -> progressDialog.setMax(total));
+                handler.post(() -> {
+                    progressIndicator.setMax(total);
+                    progressIndicator.setProgress(0);
+                });
                 
                 String productId = emojiPack.getProductId();
                 File pngDir = new File(getFilesDir(), "emoji/" + productId);
@@ -449,14 +453,11 @@ public class PackDetailActivity extends AppCompatActivity {
                     File png = new File(pngDir, id + ".png");
                     File gif = new File(gifDir, id + ".gif");
                     
-                    // 刪除舊的 GIF
                     if (gif.exists()) gif.delete();
-                    
-                    // 重新轉換
                     converter.start(png, gif);
                     
                     int progress = i + 1;
-                    handler.post(() -> progressDialog.setProgress(progress));
+                    handler.post(() -> progressIndicator.setProgress(progress));
                 }
             }
             
